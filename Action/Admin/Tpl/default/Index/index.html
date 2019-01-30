@@ -1,0 +1,48 @@
+<include file="Public:header"/>
+
+<div class="onecolumn">
+	<div class="header"><h3>系统配置信息</h3></div>
+	<div class="content" style="overflow:hidden;">
+		<div style="float:left;width:40%;">
+			<div class="edit-item">
+				<div class="lefter">系统内核：</div>
+				<div class="righter">MMDriver {:C('VERSION')}</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">MVC 框架：</div>
+				<div class="righter">ThinkPHP <php>echo THINK_VERSION;</php></div>
+			</div>
+		</div>
+		<div style="float:left;width:60%;">
+			<div class="edit-item">
+				<div class="lefter">PHP 版本：</div>
+				<div class="righter">{:phpversion()}</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">服务器软件：</div>
+				<div class="righter">{$_SERVER['SERVER_SOFTWARE']}</div>
+			</div>
+		</div>
+		<div style="float:left;width:40%;">
+			<div class="edit-item">
+				<div class="lefter">上传文件的最大大小：</div>
+				<div class="righter">{:ini_get('upload_max_filesize')}</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">POST数据的最大大小：</div>
+				<div class="righter">{:ini_get('post_max_size')}</div>
+			</div>
+		</div>
+		<div style="float:left;width:60%;">
+			<div class="edit-item">
+				<div class="lefter">程序最大内存字节数：</div>
+				<div class="righter">{:ini_get('memory_limit')}</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">建议：</div>
+				<div class="righter">memory_limit>post_max_size>upload_max_filesize</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer"/>

@@ -1,0 +1,76 @@
+
+/* form-div */
+.form-div{
+    width:80%; 
+    margin:0 auto;
+    padding:30px 0 20px 0px; 
+    font-size:32px; 
+    text-align:left;
+}
+
+.form-div input[type="text"], .form-div input[type="password"], .form-div input[type="email"]{width:320px; margin:10px; line-height:45px; font-size:28px;}
+.form-div input[type="checkbox"]{margin:20px 0 20px 10px;}
+.form-div input[type="button"],.form-div input[type="submit"]{margin:10px 20px 0 0;}
+
+.form-div table{margin:0 auto;  color:rgba(64,64,64,1.00);}
+.form-div table img{vertical-align:middle; margin:0 0 5px 0;}
+.footer{color:rgba(64,64,64,1.00); font-size:28px; margin-top:30px;}
+.form-div .buttons{float:left;margin-left: 10%;}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    padding: 5px 5px;
+    color:#333333;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    outline:1px solid #dc0c9a;
+}
+input[type="button"], input[type="submit"] {
+    padding:7px 15px;
+   background-color: #dc0c9a;
+    text-align:center;
+    border-radius:5px;
+    overflow:hidden;
+    min-width:80px;
+    border:none;
+    color:#FFF;
+    box-shadow:1px 1px 1px rgba(75,75,75,0.3);
+}
+input[type="button"]:hover, input[type="submit"]:hover {
+    background-color: #dc0c9a;;
+}
+input[type="button"]:active, input[type="submit"]:active {
+    background-color: #dc0c9a;;
+}
+.h5-logo{
+    width: 100%;
+    margin: 0 auto;
+    background: url(logo.png) no-repeat center center;
+    height:241px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+select{
+    width: 185px;
+    margin :10px;
+    appearance:none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari 和 Chrome */
+    height: 45px;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    font-size: 28px;
+    background: url(xiala.png) no-repeat right center #ffffff;
+}
+select:focus{
+    outline: none;
+}
+.h-submit{
+    width: 165px;
+    font-size: 28px;
+    line-height: 56px;
+    background-color: #dc0c9a;
+}
+.easytip-text{
+    font-size: 20px;
+}

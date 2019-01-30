@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>{if $_title}{$_title}{else}{:WEB_TITLE}{/if}</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Style/Admin/admin.css?v={:C('VERSION')}"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Style/Admin/skin/blue.css?v={:C('VERSION')}"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Style/Admin/other.css?v={:C('VERSION')}"/>
+		<script>
+			var g_domainUrl = "<?=str_replace('index.php', 'admin.php', DOMAIN_URL)?>";
+		</script>
+		<script type="text/javascript" src="__PUBLIC__/Js/lib.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/thickbox.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/fn.extend.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/form.extend.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/date/WdatePicker.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript">
+			$(function(){
+				//显示隐藏二级导航
+				$("#header .nv li").hover(function(){
+					if($(this).find(".subnv-layer").length>0){
+						$(this).addClass("ui-nv-hover");
+						$(this).find(".subnv-layer").show();
+					}
+				}, function(){
+					$(this).removeClass("ui-nv-hover");
+					$(this).find(".subnv-layer").hide();
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="wrapper user-wrapper">

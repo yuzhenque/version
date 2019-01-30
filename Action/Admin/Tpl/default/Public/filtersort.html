@@ -1,0 +1,10 @@
+<php>
+$category = getCategory($modname,$hcid);
+</php>
+分类：
+<select name="sortid">
+	<option value="">全部</option>
+	<volist name="category" id="vo">
+	<option value="{$vo['id']}" <eq name="vo.id" value="$sortid">selected</eq>>{$vo['title']}</option>
+	</volist>
+</select>

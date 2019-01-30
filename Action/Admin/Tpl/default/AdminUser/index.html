@@ -1,0 +1,56 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<div class="header">
+		<div class="float-left">
+			<a href="{:U('AdminUser/add')}" class="mini-btn mini-btn-green">新增管理员</a>
+		</div>
+	</div>
+	<div class="content">
+		<form name='betch-form' id='betch-form' method="POST" action="{:U('AdminUser/delete')}">
+			<table>
+				<tr>
+					<th width=30><input type="checkbox" onclick="$.checkbox(this, 'td')"></th>
+					<th>ID</th>
+					<th>用户名</th>
+					<th>姓名</th>
+					<th>角色</th>
+					<th>登录IP</th>
+					<th>登录时间</th>
+					<th>创建时间</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+				<volist name="list" id="rs">
+					<tr class='item'>
+						<td><input type="checkbox" name="ids[]" value="{$rs['id']}"></td>
+						<td>{$rs['id']}</td>
+						<td><if condition="$rs['status'] eq 1">{$rs['username']}<else /><font color="red">{$rs['username']}</font></if></td>
+						<td>{$rs['surename']}</td>
+						<td>{$rs['title']}</td>
+						<td><if condition="$rs['loginip'] eq ''">尚未登录<else />{$rs['loginip']}</if></td>
+						<td><if condition="$rs['loginip'] eq ''">尚未登录<else />{:date('Y-m-d H:i:s',$rs['logintime'])}</if></td>
+						<td>{:date('Y-m-d H:i:s',$rs['addtime'])}</td>
+						<td><if condition="$rs['status'] eq 1">正常<else />禁用</if></td>
+						<td>
+							<a class="act-btn" href="{:U('AdminUser/edit', array('id'=>$rs['id']))}" title="修改">修改</a>
+							{if $rs['status'] == 1}
+							<a class="act-btn" href="{:U('AdminUser/Lock', array('id'=>$rs['id']))}" title="修改">锁定</a>
+							{else}
+							<a class="act-btn" href="{:U('AdminUser/Lock', array('id'=>$rs['id']))}" title="修改">解锁</a>
+							{/if}
+							<a class="act-btn delete-btn" href="{:U('AdminUser/delete', array('id'=>$rs['id']))}" title="修改">删除</a>
+						</td>
+					</tr>
+				</volist>
+			</table>
+		</form>
+	</div>
+	<div class="action-bar">
+		<div class="float-left"><a class="ui-btn betch-delete-btn" name="#betch-form">删除选中</a></div>
+		<div class="float-right pager">
+			<div class="page">{$page}</div>
+		</div>
+	</div>
+</div>
+
+<include file="Public:footer"/>

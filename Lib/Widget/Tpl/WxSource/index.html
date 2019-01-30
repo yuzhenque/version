@@ -1,0 +1,51 @@
+<php>$randId = rand_string(6).time();</php>
+{if $source_edit == 1}
+<script>
+	$(function(){
+		if(g_mainCls.check_news_init == 0){
+			g_mainCls.wd_news_init();
+		}
+	});
+</script>
+{/if}
+<div class="news-cover">
+	<div class="cover cover-img" id="dom_news_cover_{$randId}">
+		<if condition="$coverArr">
+			<img src="{:thumb($coverArr['wxso_image'], 640, 320)}" width="320" height="160"/>
+			{if $source_edit == 1}
+				<a class="news-btn act-btn cover-btn mywin" href="{:U('WxSource/edit', 'from='.$from.'&parent_id='.$parentId.'&iscover=1&back_id='. $randId .'&wxso_id='.$coverArr['wxso_id'].'&type='.$type)}" title="编辑封面信息">编辑</a>
+				<a class="news-btn news-del-btn act-btn cover-btn" href="#"  onclick="g_mainCls.delete_news_edit('{$from}', '{$coverArr['wxso_id']}', '{$coverArr['wxso_parent_id']}', '{$randId}'" title="删除">删除</a>
+			{/if}
+			<input type="hidden" name="main_id" value="{$coverArr['wxso_id']}" />
+			<div class="title">{$coverArr['wxso_title']}</div>
+		<else/>
+			{if $source_edit == 1}
+				<a href="{:U('WxSource/add', 'from='.$from.'&parent_id='.$parentId.'&iscover=1&back_id='. $randId.'&type='.$type)}" class="mywin">添加封面新闻</a>
+			{else}
+				<a >添加封面新闻</a>
+			{/if}
+		</if>
+	</div>
+</div>
+<div  id="dom_news_list_{$randId}">
+	<if condition="$newList">
+		<foreach name="newList" key='key' item="new">
+			<div class="news-list" id="dom_news_list_li_{$new['wxso_id']}">
+				<div class="news-title">{$new['wxso_title']}</div>
+				<notempty name="new['wxso_image']">
+				<div class="news-thumb cover"><img src="{:thumb($new['wxso_image'], 320, 320)}" width='70' height="70"/></div>
+				</notempty>
+				{if $source_edit == 1}
+					<a class="news-btn act-btn mywin" href="{:U('WxSource/edit', 'from='.$from.'&parent_id='.$parentId.'&iscover=0&back_id='. $randId .'&wxso_id='.$new['wxso_id'].'&type='.$type)}" title="编辑图文信息">编辑</a>
+					<a class="news-del-btn act-btn" onclick="g_mainCls.delete_news_edit('{$from}', '{$new['wxso_id']}');">删除</a>
+				{/if}
+			</div>
+			<input type="hidden" name="sub_id[]" value="{$new['wxso_id']}" />
+		</foreach>
+	</if>
+</div>
+{if $source_edit == 1}
+	<div class="news-list" style="height:35px;line-height:35px;font-size:1.5em;text-align:center">
+		<a class='mywin' style="display:block;width:100%;height:100%;" href="{:U('WxSource/add', 'from='.$from.'&parent_id='.$parentId.'&iscover=0&back_id='. $randId.'&type='.$type)}">+ 增加一条</a>
+	</div>
+{/if}

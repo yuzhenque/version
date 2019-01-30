@@ -1,0 +1,69 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<div class="header">
+		<h3>{if $data['id']}修改{else}添加{/if}管理员</h3>
+	</div>
+	
+	<div class="content">
+		<form method="post" action="{:U('AdminUser/'.ACTION_NAME, 'id='.$data['id'])}">
+			<div class="edit-item">
+				<div class="lefter">管理组</div>
+				<div class="righter">
+					<select name="role_id" class="require">
+						<option value="">选择管理组</option>
+						<volist name="RoleList" id="row">
+							<option value="{$row['id']}" <eq name="row.id" value="$data['role_id']">selected</eq>>{$row['title']}</option>
+						</volist>
+					</select>	
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">用户名</div>
+				<div class="righter">
+					<input type="text" name="username" value="{$data['username']}" class="long-txt require min_4 max_20">
+					<span>由字母开头4-20位字母、数字、下划线组成</span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">密码</div>
+				<div class="righter">
+					<input type="password" name="password" value="" class="long-txt min_6 max_18 eq_repwd">
+					<span>由6-18位字符组成</span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">确认密码</div>
+				<div class="righter">
+					<input type="password" name="repwd" value="" class="long-txt eq_password">&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">姓名</div>
+				<div class="righter">
+					<input type="text" name="surename" value="{$data['surename']}" class="long-txt require">
+					<span>填写用户真实姓名</span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">手机号</div>
+				<div class="righter">
+					<input type="text" name="phone" value="{$data['phone']}" class="long-txt require mobile">
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">是否业务负责人</div>
+				<div class="righter">
+					<input type="radio" class="radio" value="1" name="is_yewu" {if $data['is_yewu'] == 1}checked="checked" {/if}>是
+					<input type="radio" class="radio" value="2"  name="is_yewu" {if empty($data['is_yewu']) || $data['is_yewu'] == 2}checked="checked" {/if}>否
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="righter">
+					<span class="ui-btn ui-btn-green submit">提 交</span>
+					<a onclick="$('#MYWIN_OVERLAY').trigger('click')" class="ui-btn">取 消</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<include file="Public:footer"/>

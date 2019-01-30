@@ -1,0 +1,15 @@
+<!-- 获取并显示左边栏导航 -->
+	{if $childMenu}
+	<div id="shortcut">
+	{foreach $childMenu as $mod=>$vo}
+		<h4{if !empty($vo['current'])} class="current h4-focus"{/if}>{$vo['title']}</h4>
+		<ul class="{if empty($vo['current'])}hide{else}shortcut-list{/if}">
+		{foreach $vo['list'] as $st}
+			<li{if !empty($st['current'])} class="li-focus"{/if}><a class="menu-{$st['m']?$st['m']:$mod}-{$st['a']}" href="{$st.url}" title="{$st['title']}">{$st['title']}</a></li>
+		{/foreach}
+		</ul>
+	{/foreach}
+	</div>
+	{else}
+	<style>#content_wrapper{padding-left:25px;}</style>
+	{/if}

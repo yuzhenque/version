@@ -1,0 +1,66 @@
+<include file="Public:header"/>
+<style>
+	.content ul li{
+		width: 120px; float: left;
+	}
+</style>
+<div class="onecolumn">
+	<form method="post" action="{:U('AdminRole/'.ACTION_NAME, 'id='.$data['id'])}">
+		<div class="header">
+			<h3>{if $data['id']}修改{else}添加{/if}管理组</h3>
+		</div>
+		<div class="content">
+			<div class="edit-item">
+				<div class="lefter">角色名称</div>
+				<div class="righter">
+					<input type="text" name="title" value="{$data['title']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<php>
+				$stylelist = C('MENU');
+			</php>
+			{foreach $stylelist as $key=>$row}
+				<table>
+					<tr>
+						<th class='list-title' colspan='2'>
+							<input type="checkbox" onclick="$.checkbox(this, '.{$key}')">
+							{$row['title']}
+						</th>
+					</tr>
+					{foreach $row['list'] as $ak=>$av}
+					<tr>
+						<td width='150' class="{$key}">
+							<input type="checkbox" onclick="$.checkbox(this,'.{$key}-{$ak}')">
+							<b>{$av.title}</b> 
+						</td>
+						<td class="{$key} {$key}-{$ak}">
+							<ul>
+							{foreach $av['list'] as $bk=>$bv}
+							<li>
+								<php>
+									!empty($bv['m']) OR $bv['m'] = !is_numeric($ak) ? $ak : $key;
+									!empty($bv['a']) OR $bv['a'] = 'index';
+								</php>
+								<input type="checkbox" name="permissions[]" value="{$bv['m']}-{$bv['a']}" {if in_array($bv['m'].'-'.$bv['a'], $data['resources'])}checked{/if}/>
+								{$bv.title}
+							</li>
+							{/foreach}
+							</ul>
+						</td>
+					</tr>
+					{/foreach}
+				</table>
+			{/foreach}
+		</div>
+		<div class="edit-item">
+			<div class="righter">
+				<span class="ui-btn ui-btn-green submit">提 交</span>
+				<a onclick="$('#MYWIN_OVERLAY').trigger('click')" class="ui-btn">取 消</a>
+			</div>
+		</div>
+	</form>
+</div>
+<include file="Public:footer"/>

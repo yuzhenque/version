@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>{if $_title}{$_title}{else}{:WEB_TITLE}{/if}</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Style/Admin/admin.css?v={:C('VERSION')}"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Style/Admin/skin/blue.css?v={:C('VERSION')}"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Style/Admin/common.css?v={:C('VERSION')}"/>
+		<script>
+			var g_domainUrl = "{:DOMAIN_URL}";
+		</script>
+		<link type="image/x-icon" href="/favicon.ico" rel="icon">
+		<script type="text/javascript" src="__PUBLIC__/Js/lib.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/thickbox.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/fn.extend.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/form.extend.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/date/WdatePicker.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/init.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="/Public/Js/loading.extend.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/window.extend.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/mywin.js?v={:C('VERSION')}"></script>
+		<script type="text/javascript" src="__PUBLIC__/Js/Jquery/lightbox/jquery.lightbox-0.5.min.js?v={:C('VERSION')}"></script>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Js/Jquery/lightbox/images/jquery.lightbox-0.5.css?v={:C('VERSION')}" />
+		<script>
+			$(function(){
+				//显示隐藏二级导航
+				$("#header .nv li").hover(function(){
+					if ($(this).find(".subnv-layer").length > 0){
+						$(this).addClass("ui-nv-hover");
+						$(this).find(".subnv-layer").show();
+					}
+				}, function(){
+					$(this).removeClass("ui-nv-hover");
+					$(this).find(".subnv-layer").hide();
+				});
+				$(".window-box").click(function(){
+					$(this).show_window();
+					return false;
+				});
+				
+				//展开收缩左边栏
+				$("#shortcut h4").click(function(){
+					if(!$(this).hasClass("current")){
+						$("#shortcut h4.current").removeClass("current");
+						$("#shortcut .shortcut-list").slideUp(function(){
+							$(this).addClass("hide").removeClass("shortcut-list");
+						});
+					}
+					$(this).toggleClass("current");
+					$(this).next("ul").slideToggle().toggleClass("hide").toggleClass("shortcut-list");
+				});
+			});
+		</script>
+	</head>
+	<body>
+		
+	<div id="header">
+		<div class="bottom">
+			<ul class="nv" style='padding-left: 0px'>
+				<li><a class="select-pos nv-item" style="display:inline-block;width:100%;padding: 0px 20px;">ERP-版本发布管理系统</a></li>
+				{foreach $navlist as $key=>$vo}
+				<li {if !empty($vo['current'])}class='current'{/if}>
+					<a href="{$vo.url}" class="select-pos nv-item" style="display:inline-block;width:100%;padding: 0px 20px;">{$vo.title}</a>
+					<div class="subnv-layer">
+						{foreach $vo['list'] as $mod => $nv}
+						<a href="{$nv.url}">{$nv['title']}</a>
+						{/foreach}
+					</div>
+				</li>
+				{/foreach}
+				<li style="float: right; background: orangered;">
+					<a style="display:inline-block;width:100%;padding: 0px 20px;" href="/index.php/login/logout">退出</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<div id="outside-wrap">
+		<!-- 左边导航栏 -->
+		<include file="Public:shortcut"/>
+		
+		<div class="outside-wrap-right">
+			<!-- 面包导航 -->
+			<include file="Public:bread"/>
+
+			<div id="wrapper">
+				<div class="wrapper">
+					<div id="content_wrapper">

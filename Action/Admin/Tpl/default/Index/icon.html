@@ -1,0 +1,25 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<style>
+		.onecolumn ul li i{
+			font-size: 30px;
+		}
+	</style>
+	<ul>
+		<php>
+			$a = array(2, 3, 4, 5, 6);
+			$b = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f);
+		</php>
+		{foreach $a as $v}
+			{foreach $b as $v1}
+				<li style=" width: 100px; padding: 20px;text-align:center; display: inline-block; float: left">
+					<i class="iconfont">&#x{$v}{$v1};</i><br/>
+					<span><input type="text" class="short-txt" value="#x{$v}{$v1};" style="width: 80px;"/></span>
+				</li>
+			{/foreach}
+		{/foreach}
+	</ul>
+</div>
+
+
+<include file="Public:footer"/>

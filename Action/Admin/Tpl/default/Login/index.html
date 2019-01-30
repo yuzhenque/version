@@ -1,0 +1,75 @@
+<include file="Public:minheader"/>
+
+<script type="text/javascript">
+	$(function() {
+		$(".wrapper").css("margin-top", "-" + ($(".wrapper").outerHeight() / 2) + "px");
+		$("form").submit(function() {
+			$.setcookie('remember_user', false, 0);
+			var username = $.trim($("#username").val());
+			var password = $.trim($("#password").val());
+			if (username == '') {
+				showmsg('用户名不能为空', 'c_username');
+				return false;
+			}
+			if (password == '') {
+				showmsg('密码不能为空', 'c_password');
+				return false;
+			}
+			$(".content .error").remove();
+			if (parseInt($("#remember").val()) > 0)
+				$.setcookie('remember_user', username, 30);
+			$.ajax({
+				url: $(this).attr("action"),
+				data: "username=" + username + "&password=" + password,
+				type: "POST",
+				dataType: 'json',
+				success: function(json) {
+					if (json.status == 1) {
+						document.location.href = json.url;
+					} else {
+						showmsg(json.info, 'c_all');
+					}
+				},
+				error: function() {
+					alert('系统出错，登录验证失败');
+				}
+			});
+			return false;
+		});
+
+		$(document).keydown(function(e) {
+			e = e || window.event;
+			if (e.keyCode == 13) {
+				$('form').submit();
+			}
+		});
+	});
+
+	function showmsg(msg, cls) {
+		if ($(".content .error").length > 0) {
+			$(".content .error").html(msg);
+		} else {
+			$(".content").prepend("<div style='display:none;' class='error " + cls + "'>" + msg + "</div>");
+			$(".content .error").fadeIn();
+		}
+
+	}
+</script>
+<script type="text/javascript">
+	$(function() {
+		$(".wrapper").css("margin-top", "-" + ($(".wrapper").outerHeight() / 2) + "px");
+	});
+</script>
+<div class="header">用户登录</div>
+<div class="content">
+	<form action="{:U('login/index')}" method="post">
+		<label class="lb" for="username">用户名：</label>
+		<div class="form-item"><input value="" onblur="$.trim(this.value) != '' && $('.c_username').remove()" onchange="$('.c_all').remove()" name="username" placeholder="输入用户名" id="username" type="text" class="long-txt"></div>
+		<label class="lb" for="password">密 码：</label>
+		<div class="form-item"><input id="password" onblur="$.trim(this.value) != '' && $('.c_password').remove()" onchange="$('.c_all').remove()" placeholder="输入登录密码" name="password" type="password" class="long-txt"></div>
+		<div style="padding-top:10px;">
+			<span class="ui-btn ui-btn-green" onclick="$('form').submit()">登 录</span>
+		</div>
+	</form>
+</div>
+<include file="Public:minfooter"/>

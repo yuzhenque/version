@@ -1,0 +1,97 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<div class="header">
+		<div class='tagbar ui-tag' style="float: left">
+			<ul>
+				<li lang=".base-item" class="ui-tag-cur">基础信息</li>
+				<li lang=".content-item">更新内容</li>
+				<li lang=".database-item">数据库升级</li>
+				<li lang=".view-item">视图升级</li>
+				<li lang=".basetable-item">基础表升级</li>
+				<li lang=".file-item">文件发布</li>
+				<li lang=".script-item">运行脚本</li>
+				<li lang=".autoscript-item">定时脚本</li>
+				<li lang=".filefilter-item">已过滤文件</li>
+			</ul>
+		</div>
+	</div>
+	<div class="content">
+		<form class="toAjaxForm" action="{:U(MODULE_NAME . '/'. ACTION_NAME, 'version_id='.$data['version_id'])}" id="search-form" method="POST" enctype='multipart/form-data' class="">
+			<div class="edit-item base-item">
+				<div class="lefter">版本名称</div>
+				<div class="righter">
+					<input type="text" name="version_name" value="{$data['version_name']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item base-item">
+				<div class="lefter">预发布时间</div>
+				<div class="righter">
+					<input type="text" name="version_plan_time" value="{:date('Y-m-d', $data['version_plan_time'])}" onclick="WdatePicker();" class="middle-txt require Wdate">
+				</div>
+			</div>
+			<div class="edit-item base-item">
+				<div class="lefter">正式发布时间</div>
+				<div class="righter">
+					<input type="text" name="version_release_time" value="{:date('Y-m-d', $data['version_release_time'])}" onclick="WdatePicker();" class="middle-txt require Wdate">
+				</div>
+			</div>
+			<div class="edit-item base-item">
+				<div class="lefter">不可同步文件</div>
+				<div class="righter">
+					<textarea name="version_file_not_exsits" rows="20" style="width: 98%;height: 200px;">{$data['version_file_not_exsits']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item content-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea name="version_content" rows="20" class="" style="width: 98%;height: 500px;">{$data['version_content']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item database-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea name="version_database" rows="20" class="" style="width: 98%;height: 500px;">{$data['version_database']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item view-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea name="version_database_view" rows="20" class="" style="width: 98%;height: 500px;">{$data['version_database_view']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item basetable-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea name="version_basic" rows="20" class="" style="width: 98%;height: 500px;">{$data['version_basic']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item file-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea name="version_file" rows="20" class="" style="width: 98%;height: 500px;">{$data['version_file']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item script-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea name="version_script" rows="20" class="" style="width: 98%;height: 500px;">{$data['version_script']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item autoscript-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea name="version_auto_script" rows="20" class="" style="width: 98%;height: 500px;">{$data['version_auto_script']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item filefilter-item">
+				<div class="righter" style="padding-left: 0px">
+					<textarea  rows="20" class="" style="width: 98%;height: 500px;">{$data['version_file_filter']}</textarea>
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="righter">
+					<input type="hidden" name="referer" value="{$referer}" />
+					<input type="hidden" name="version_id" value="{$data['version_id']}" />
+					<input type="hidden" name="version_file_filter" value="{$data['version_file_filter']}" />
+					<span class="ui-btn ui-btn-green submit">提 交</span>
+					<a onclick="$('#MYWIN_OVERLAY').trigger('click')" class="ui-btn">取 消</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<include file="Public:footer"/>

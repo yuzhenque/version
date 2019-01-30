@@ -1,0 +1,30 @@
+{if $datas}
+{if $first_time==1}
+<link rel="stylesheet" type="text/css" href="{$JS_PATH}upload/images/upload.css"/>
+{/if}
+{foreach $datas as $vo}
+	{if !is_array($vo)}{@$vo=$datas}{@$break=true}{/if}
+	<div class="uploadify-queue-item upload-completed uploadify-queue-{$first_time}" title="{H($vo['name'])}">
+	{if inArray($vo['file_ext'],$image_exts)}
+		<a href="{$vo['http_path']}"><img class="hide-path" src="{$vo['tbimg']}" /></a>
+	{else}
+		<a href="{$vo['http_path']}" class="hide-path">
+			<span class="fileType">{$vo['file_ext']}</span>
+			<span class="fileName">{H($vo['name'])}</span>
+		</a>
+	{/if}
+	</div>
+	{if $break}{php}break;{/php}{/if}
+{/foreach}
+<script type="text/javascript">
+$(function(){
+	$(".uploadify-queue-{$first_time} a").lightBox({
+		imageLoading :  '{$JS_PATH}lightbox/images/lightbox-ico-loading.gif',
+		imageBtnPrev:	'{$JS_PATH}lightbox/images/lightbox-btn-prev.gif',	
+		imageBtnNext:	'{$JS_PATH}lightbox/images/lightbox-btn-next.gif',	
+		imageBtnClose:	'{$JS_PATH}lightbox/images/lightbox-btn-close.gif',
+		imageBlank:		'{$JS_PATH}lightbox/images/lightbox-blank.gif'
+	});
+});
+</script>
+{/if}

@@ -1,0 +1,73 @@
+{include Public:header}
+	<div class="onecolumn">
+		<div class="header"><h3>请选择您要更新的内容</h3></div>
+		<div class="content">
+			<table>
+				<tr>
+					<th class="list-check"><input onclick="$.checkbox(this,'.item')" type="checkbox"></th>
+					<th class="list-title">更新内容</th>
+				</tr>
+			{foreach $datas as $key=>$title}
+				<tr class="item"><td><input type="checkbox" value="{$key}" checked></td><td class="list-title">{$title}</td></tr>
+			{/foreach}
+			</table>
+			<div class="edit-item">
+				<div class="righter">
+					<span class="ui-btn ui-btn-green submit">开始更新</span>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+var $arr = null
+var idx = 0;
+$(function(){
+	$(".submit").click(function(){
+		$arr = $(".item input:checked");
+		if($arr.length > 0){
+			$.warn("点击“确定”系统将自动开始更新缓存？", function(){
+				idx = 0;
+				autoClear(0);
+			});
+		}else{
+			$.warn("请先选择您要更新的内容");
+		}
+		
+		return false;
+	});
+});
+
+function autoClear(timeout){
+	timeout = timeout > 0 ? timeout : 0;
+	setTimeout(function(){
+		if(idx < $arr.length){
+			$.ajax({
+				url : "{url('refresh')}",
+				data : "cache=" + $($arr[idx]).val(),
+				beforeSend : function(){
+					$.loading("正在更新"+$($arr[idx]).parent().next("td").text()+"缓存，请稍候...");
+				},
+				type : "POST",
+				dataType : "json",
+				success : function(json){
+					if(json.code == $.CODE_SUCCESS){
+						autoClear(1);
+					}else{
+						$.remove_loading();
+						$.error(json.data, json.url);
+					}
+				},
+				error : function(){
+					$.error("系统出错，无法更新缓存");
+					$.remove_loading();
+				}
+			});
+		}else{
+			$.remove_loading();
+			$.success("缓存全部更新完毕", false);
+		}
+		idx++;
+	}, 1000 * timeout);
+}
+</script>
+{include Public:footer}

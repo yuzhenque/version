@@ -1,0 +1,15 @@
+<php>
+$category = getCategory($modname,$hcid);
+</php>
+<div class="addDiv">
+	<div class="addTitle">分类</div>
+	<div class="addBox">
+		<select name="sortid">
+			<option value="">请选择分类</option>
+			<volist name="category" id="vo">
+			<option value="{$vo['id']}" <eq name="vo.id" value="$rs['sortid']">selected</eq>>{$vo['title']}</option>
+			</volist>
+		</select>
+		<span></span>&nbsp;
+	</div>
+</div>

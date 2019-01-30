@@ -1,0 +1,46 @@
+<include file="Public:header"/>
+<form name='betch-form' id='betch-form' method="POST" action="{:U('Server/index')}" class="toAjaxForm">
+	<div class="onecolumn">
+		<div class="header">
+			<div class="float-left">
+				<a href="{:U('Server/add')}" class="mini-btn mini-btn-green mywin">新增服务器</a>
+			</div>
+		</div>
+		<div class="content">
+			<table>
+				<tr>
+					<th width=50>序号</th>
+					<th>类型</th>
+					<th>服务器名称</th>
+					<th>域名</th>
+					<th>IP</th>
+					<th width='80'>操作</th>
+				</tr>
+				<volist name="list" key="key" id="rs">
+					<tr>
+						<td style="text-align: left;{if !empty($rs['server_parent_id'])}padding-left: 50px;{/if}">
+							{$key}
+						</td>
+						<td>{:GC('server_type', $rs['server_type'])}</td>
+						<td>{$rs['server_title']}</td>
+						<td>{$rs['server_domain']}</td>
+						<td>{$rs['server_ip']}</td>
+						<td>
+							<a class="act-btn mywin" href="{:U('Server/edit', array('server_id'=>$rs['server_id']))}" title="修改">修改</a>
+							<a class="act-btn mywin" href="{:U('Server/add', array('server_id'=>$rs['server_id']))}" title="复制">复制</a>
+						</td>
+					</tr>
+				</volist>
+			</table>
+		</div>
+	</div>
+	<div class="action-bar">
+<!--		<div class="float-left">
+			<a class="ui-btn ui-btn-green submit" name="#betch-form">排序</a>
+		</div>-->
+		<div class="float-right pager">
+			<div class="page">{$page}</div>
+		</div>
+	</div>
+</form>
+<include file="Public:footer"/>

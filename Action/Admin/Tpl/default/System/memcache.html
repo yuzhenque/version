@@ -1,0 +1,45 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<div class='header'>
+		<h3>请选择表[<if condition="_DC_MMC_DISABLE eq 1">未开启缓存<else/>已开启缓存(<if condition="$connected == true">已连接<else/>未连接</if>)</if>]</h3>
+	</div>
+	<div class='content'>
+		<form action="__APP__/System/flushTable" method="POST">
+			<table width="60%">
+				<tr>
+				<volist name="mmcTbCfg" id="tableList">
+					<td width="20%" style="text-align: left"><input type="checkbox" name="tables[]" value="{$key}"/>{$key}</td>
+					<if condition="$i%5 == 0"></tr><tr></if>
+				</volist>
+				</tr>
+				<tr>
+					<td align="center" colspan="6">
+						<label><input type="submit" name="flushOneTable" value="刷新选中表" class="btn"/></label>
+						<label><input type="button" name="flushAllTable" value="更新全部缓存" class="btn" onclick="window.location.href = '__APP__/System/flushAllTable';"/></label>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class='header'>
+		<h3>刷新缓存目录</h3>
+	</div>
+	<div class='content'>
+		<div class="edit-item">
+			<form action="__APP__/System/flushFileCache" method="POST">
+				<table width="60%">
+					<tr>
+						<td>1）/SiteData/Runtime/</td>
+					</tr>
+					<tr>
+						<td align="center" colspan="6">
+							<input type="submit" name="Submit" value="清空以上目录缓存" class="btn"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

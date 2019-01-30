@@ -1,0 +1,35 @@
+<div class="slide-1920">
+	<div class="bd">
+		<ul>
+			{foreach $ad_list as $k=>$rs}
+			<li>
+				<a href="{$rs['ad_url']}">
+					<img src="{:thumb($rs['ad_image_id'], 1920, 430)}" width="100%">
+				</a>
+			</li>
+			{/foreach}
+		</ul>
+	</div>
+	<div class="hd">
+		<ul>
+			{foreach $ad_list as $k=>$rs}
+				<li class="{if $k == 0}on{/if}">{$k+1}</li>
+			{/foreach}
+		</ul>
+	</div>
+	<a href="javascript:void(0)" class="prev prevStop"></a>
+	<a href="javascript:void(0)" class="next nextStop"></a>
+</div>
+
+<script src="/Public/Js/Jquery/jquery.SuperSlide.2.1.1.js?v={:C('VERSION')}" type="text/javascript"></script>
+<script>
+	jQuery(".slide-1920").slide({mainCell: ".bd ul", effect: "left", autoPlay: true});
+	
+	$('.slide-1920').mouseenter(function () {
+		$('.prev').removeClass('prevStop');
+		$('.next').removeClass('nextStop');
+	}).mouseleave(function () {
+		$('.prev').addClass('prevStop');
+		$('.next').addClass('nextStop');
+	});
+</script>

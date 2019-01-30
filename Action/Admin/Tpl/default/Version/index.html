@@ -1,0 +1,33 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<div class="header">
+		<div class="float-left">
+			<a href="{:U(MODULE_NAME . '/add', 'type='. $p_type)}" class="mini-btn mini-btn-green">新增版本</a>
+		</div>
+	</div>
+	<div class="content">
+		<table>
+			<tr>
+				<th width='60'>序号</th>
+				<th>版本</th>
+				<th width='130'>预发布时间</th>
+				<th width='130'>正式发布时间</th>
+				<th width="80">操作</th>
+			</tr>
+			<volist name="datas" id="rs">
+				<tr>
+					<td>{$i}</td>
+					<td>{$rs['version_name']}</td>
+					<td>{:date('Y-m-d', $rs['version_plan_time'])}</td>
+					<td>{:date('Y-m-d', $rs['version_release_time'])}</td>
+					<td>
+						<a href="__URL__/edit/version_id/{$rs['version_id']}" class="act-btn" title="修改">修改</a>
+						<a href="__URL__/delete/version_id/{$rs['version_id']}" class="act-btn delete-btn" title="删除">删除</a>
+					</td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+</div>
+{if $pageHtml}<div class="float-right pager">{$pageHtml}</div>{/if}
+<include file="Public:footer"/>

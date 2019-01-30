@@ -1,0 +1,74 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<form method="post" action="{:U('Sync/do_sync')}" class="toAjaxForm" id="betch-form">
+		<div class="content">
+			<div class="edit-item">
+				<div class="lefter">类型</div>
+				<div class="righter">
+					<select id='server_type' name='server_type'>
+						{foreach C('server_type') as $k=>$v}
+						<option value="{$k}" {if $k == $data['server_type']}selected{/if}>{$v}</option>
+						{/foreach}
+					</select>
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">选择服务器</div>
+				<div class="righter server_ids">
+
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">是否更新SVN</div>
+				<div class="righter">
+					<input type="radio" name="svn_update" value="1" /> 是
+					<input type="radio" name="svn_update" value="2" CHECKED/> 否
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">文件</div>
+				<div class="righter">
+					<textarea name="sync_files" rows="20" class="require" style="width: 98%;height: 100px;"></textarea>
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="righter">
+					<span class="ui-btn ui-btn-green" onclick="_submitFormData(this);">提 交</span>
+					<a onclick="$('#MYWIN_OVERLAY').trigger('click')" class="ui-btn">取 消</a>
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">日志</div>
+				<div class="righter">
+					<div id='sync_files_log' style='height: 200px; overflow-y: auto'></div>
+					<span></span>&nbsp;
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	var g_server_list = {:json_encode($list)};
+	
+	function server_type_change()
+	{
+		var server_type = parseInt($('#server_type').val());
+		var html = '';
+		for(var idx in g_server_list){
+			if(parseInt(g_server_list[idx]['server_type']) == server_type){
+				html += "<label>";
+				html += "<input type='checkbox' name='server_ids[]' value='"+ g_server_list[idx]['server_id'] +"' checked>"+ g_server_list[idx]['server_title'];
+				html += "</label>";
+			}
+		}
+		$('.server_ids').html(html ? html : '无服务器,请添加');
+	}
+	
+	server_type_change();
+	$('#server_type').change(server_type_change);
+</script>
+<include file="Public:footer"/>

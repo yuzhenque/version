@@ -1,0 +1,22 @@
+<eq name="position" value="goods">
+<div class="recommend">
+	{foreach $ad_list as $v}
+	<div class="recommend-border go-btn" rel="{$v.ad_url}">
+		<img src="{:thumb($v['ad_image_id'], 263, 143)}">
+		<div class="jiaobiao">
+			<div class="text">
+				{@ $price = D("Goods")->getFieldByGoodsId($v['ad_goods_id'], 'goods_price');}
+				￥{$price}</div>
+		</div>
+		<div class="title-bg">
+			<h3>{:cut_str($v['ad_title'],46)}</h3>
+		</div>
+		<button class="button-warp">
+			立即
+			<p>购买</p>
+		</button>
+	</div>
+	{/foreach}
+</div>	
+</eq>
+

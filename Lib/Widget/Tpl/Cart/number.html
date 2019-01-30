@@ -1,0 +1,5 @@
+<div class="number">
+	<a class="add sub" onclick="g_cartCls.update_number('{$gotyId}', 2);">-</a>
+	<input type="text" value="{$defaultValue}" onblur="g_cartCls.blur('{$gotyId}');" name="cart_number[{$gotyId}]" data-id="{$gotyId}" class="num-value cart_number cart_number_{$gotyId}">
+	<a class="add" onclick="g_cartCls.update_number('{$gotyId}', 1);">+</a>
+</div>

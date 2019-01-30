@@ -1,0 +1,37 @@
+{include Public:header}
+<div class="onecolumn">
+	<div class="header">
+		<h3>密码修改</h3>
+	</div>
+	<div class="content">
+		<form method="post" action="{U('AdminUser/EditPass')}" class="toAjaxForm">
+			<div class="edit-item">
+				<label for="old_password" class="lefter">原密码：</label>
+				<div class="righter must">
+					<input type="password" class="long-txt require min_6 max_16" name="old_password" id="old_password" />
+					<span class="DESC">请输入原来密码</span>
+				</div>
+			</div>
+			<div class="edit-item">
+				<label for="new_password" class="lefter">新密码：</label>
+				<div class="righter must">
+					<input type="password" class="long-txt require min_6 max_16 eq_confim_password" name="new_password" id="new_password" />
+					<span class="DESC">新密码由8～16个字符组成</span>
+				</div>
+			</div>
+			<div class="edit-item">
+				<label for="confirm_password" class="lefter">确认密码：</label>
+				<div class="righter must">
+					<input type="password" class="long-txt require min_6 max_16 eq_new_password" name="confirm_password" id="confirm_password" />
+					<span class="DESC">请再一次输入密码</span>
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="righter">
+					<span class="ui-btn ui-btn-green submit">确认修改</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+{include Public:footer}

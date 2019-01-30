@@ -1,0 +1,214 @@
+/*绿色主题CSS文件*/
+body {
+    background: url("../images/bg.gif");
+    color: #555555;
+}
+
+a{
+	color:#555555;
+}
+
+#header, .user-wrapper .header{
+	background-color: #00A300;
+	color: #FFFFFF;
+}
+
+.view-btn{color:#00A300;}
+
+#header a{
+	color:#FFFFFF;
+}
+
+#header .subnv-layer a:hover{
+	background: #00A300; 
+	color:#fff;
+}
+
+#header .subnv-layer a{
+	color:#555;
+}
+
+#header .nv li.current{
+	background-color:#029813;
+}
+
+#header .subnv-layer, #select-tag-box{
+	background-color: #FFFFFF;
+	border:1px solid #F2F2F2;
+}
+
+#header .ui-nv-hover{
+	background-color: #78BA00;
+}
+
+.ico-setting, .ico-logout, .ico-skin, .ico-clear{
+	background-color:#029813;
+}
+
+#shortcut{
+	background-color:#F3F3F3;
+}
+
+#shortcut h4{
+	background: #78ba00;
+	color:#FFFFFF;
+}
+
+#shortcut h4.h4-focus {
+    background: #029813;
+}
+
+#shortcut li{
+	border-bottom:1px dotted #ccc;
+}
+
+#wrapper{
+	background-color: #FFFFFF;
+}
+
+.onecolumn {
+    background-color: #fdfdfd;
+}
+
+.onecolumn .header,  #MYWIN_BOX .mywin-title{
+	background-color:#EEEEEE;
+	border-bottom:1px solid #CCCCCC;
+}
+
+.onecolumn .header h3, li.ui-tag-cur{
+	color:#000000;
+}
+
+.onecolumn .content th, .min-box th, .onecolumn .content th a, .min-box th a{
+	color:#333333;
+}
+
+.onecolumn .content th, .min-box th{
+	background: #EBEBEB;
+	color:#333333;
+}
+
+.min-box .inner-head th,.onecolumn .content .inner-head th{background: #fff;border-bottom:1px solid #666;}
+
+.long-txt,.short-txt, select{
+	border:1px solid #CCCCCC;
+	background-color: #FEFEFE;
+}
+
+.edit-item{
+	border-bottom: 1px solid #EEEEEE;
+}
+
+.DESC {
+    color: #999999;
+    padding-left: 5px;
+}
+
+.search-bar .inner-search-btn{
+	background:#00A300;
+    border: 1px solid #00A300;
+}
+
+/*弹出框CSS START*/
+.Alert_Content .header{
+	background-color: #037C11;
+}
+/*弹出框CSS END*/
+
+.ui-btn, .mini-btn{
+	border: 1px solid #DDD;
+	background: #DDD;
+}
+
+.ui-btn:hover, .mini-btn:hover{
+	border: 1px solid #CCC;
+	background: #CCC;
+}
+
+.ui-btn-green, .mini-btn-green, .act-btn, .status-btn{
+	background:#00A300;
+	color:#FFFFFF;
+	border:1px solid #00A300;
+}
+
+.status-btn{border:0;}
+
+.status-1,.status-2,.status-3,.status-4{color:#FFFFFF;border:0;}
+.status-1{background:#00A300;}
+.status-2{background:#FF0000;}
+.status-3{background:#D8F102;}
+.status-4{background:#D7DCFF;}
+.status-5{background:#DC681B;}
+.status-6{background:#279AD7;}
+.status-7{background:#415067;}
+.status-8{background:#B848FF;}
+.status-9{background:#FFE66B;}
+.status-10{background:#4DB849;}
+.status-11{background:#252525;}
+.status-12{background:#E53C36;}
+.status-13{background:#a53C96;}
+
+.ui-btn-green:hover, .mini-btn-green:hover, .act-btn:hover{
+	background-color: #037C11;
+	border:1px solid #037C11;
+}
+
+#MYWIN_BOX, #window-container{
+	background-color:#FFFFFF;
+	border:1px solid #037C11;
+}
+
+/*分页展示 START*/
+.pager a , .pager .PAGER_TOTAL{
+	background-color: #EEEEEE;
+}
+
+.pager a:hover{
+	background-color: #029813;
+	color:#FFFFFF;
+}
+
+.pager .PAGER_CURRENT{
+	background: #037C11; 
+	color:#fff;
+}
+/*分页展示END*/
+
+#select-tag-box a:hover{
+	color:#FFFFFF;
+}
+
+#tag-container a:hover{
+	background:#04bc1a;
+}
+
+.color-0{color:#037C11;}
+.color-1{color:#FF0000;}
+.color-2{color:#EC9110;}
+
+.onecolumn .content td, .edit-item, .min-box td {
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.ui-radio-checked{
+	border:1px solid #037C11;
+}
+
+.onecolumn .content .inner-table td{
+	border:1px dotted #CCCCCC;
+}
+
+.treeview .li-focus a.focus {
+	background-color: #00A300;
+	color:#FFFFFF;
+}
+
+.empty-data span{
+	color:#FF0000;
+	background: url(green/empty.png) no-repeat left center;
+}
+
+.search-bar .search-btn{
+	background: #00A300;
+	border:1px solid #00A300;
+}

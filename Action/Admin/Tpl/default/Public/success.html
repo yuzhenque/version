@@ -1,0 +1,126 @@
+<include file="Public:minheader"/>
+<script type="text/javascript">
+	$(function() {
+		$(".wrapper").css("margin-top", "-" + ($(".wrapper").outerHeight() / 2) + "px");
+	});
+</script>
+<style>
+	.wrapper{
+		padding-bottom:15px;
+		width:470px;
+		margin-left:-235px;
+		border:1px solid #CCC;
+		background:#F2F2F2;
+		position:absolute;
+		left:50%;
+		top:50%;
+		-webkit-box-shadow:0px 0px 9px 1px #616161;
+		-moz-box-shadow:0px 0px 9px 1px #616161;
+		box-shadow:0px 0px 9px 1px #616161;
+		-o-box-shadow:0px 0px 9px 1px #616161;
+		-ms-box-shadow:0px 0px 9px 1px #616161;
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+		border-radius: 2px;
+		-o-border-radius: 2px;
+		-ms-border-radius: 2px;
+		font-size:14px;
+	}
+
+	.header{
+		height: 50px;
+		line-height: 50px;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+
+		-webkit-border-top-left-radius: 2px;
+		-moz-border-top-left-radius: 2px;
+		border-top-left-radius: 2px;
+		-o-border-top-left-radius: 2px;
+		-ms-border-top-left-radius: 2px;
+
+		-webkit-border-top-right-radius: 2px;
+		-moz-border-top-right-radius: 2px;
+		border-top-right-radius: 2px;
+		-o-border-top-right-radius: 2px;
+		-ms-border-top-right-radius: 2px;
+	}
+
+	.content{padding:15px 25px;}
+
+	.long-txt{
+		width:400px;font-size:14px;
+		height: 32px;
+		line-height: 32px;
+	}
+
+	.lb{display: block;padding:5px 0px;word-spacing:8px;}
+	.form-item{clear: both;padding-bottom:10px;}
+
+	.error,.info,.warn{
+		position: static;
+		padding:5px 8px 5px 27px;
+		line-height:32px;
+		margin:0 0 10px 0;
+		display:block;
+	}
+</style>
+<div class="header" style="padding-left:10px;">
+	<i style="font-size:24px;overflow:hidden;float:left;margin-right:7px;" class="iconfont">
+		{if $status==1}&#x24;{else}&#x22;{/if}
+	</i>信息提示
+</div>
+<div class="content">
+	<p style="font-size:1.5em;" class="form-item color-{$code}"><b>{$error}{$message}</b></p>
+	<div style="padding-top:10px;border-top:1px solid #CCCCCC;">系统 <b id="suplus_second">{$waitSecond|default='1'}</b> 秒后将自动跳转， 不想等待请<a href="javascript:void(0);" onclick="waitSecond = 1;
+			jumpTimeout()">点击这里</a></div>
+</div>
+<script>
+	var waitSecond = {$waitSecond | default = '3'};
+//	var waitSecond  = 1000;
+	var jsStr = '';
+	var jsEndStr = '';
+	var topUrl = false;
+	var jumpUrl = "{$jumpUrl}";
+	var intervalId = 0;
+
+	//解析URL。分享出JS和URL
+	if (jumpUrl.indexOf("<js>") != -1) {
+		jsStr = jumpUrl.substring(jumpUrl.indexOf("<js>") + 4, jumpUrl.indexOf("</js>"));
+		jumpUrl = jumpUrl.replace("<js>" + jsStr + "</js>", '');
+		eval(jsStr);
+	}
+	if (jumpUrl.indexOf("<jsend>") != -1) {
+		jsEndStr = jumpUrl.substring(jumpUrl.indexOf("<jsend>") + 7, jumpUrl.indexOf("</jsend>"));
+		jumpUrl = jumpUrl.replace("<jsend>" + jsEndStr + "</jsend>", '');
+	}
+	if (jumpUrl.indexOf("<topurl>") != -1) {
+		topUrl = true;
+		jumpUrl = jumpUrl.replace("<topurl>", '');
+	}
+
+	/**
+	 * 跳转动作
+	 */
+	function jumpTimeout() {
+		waitSecond--;
+		$('#suplus_second').html(waitSecond);
+		if (waitSecond <= 0) {
+			clearInterval(intervalId);
+			if (jsEndStr != '') {
+				eval(jsEndStr);
+			}
+			if (jumpUrl != '') {
+				if (topUrl) {
+					window.top.location.href = jumpUrl;
+				} else {
+					window.location.href = jumpUrl;
+				}
+			}
+		}
+	}
+	jumpTimeout();
+	intervalId = setInterval(jumpTimeout, 1000);
+</script>
+<include file="Public:minfooter"/>

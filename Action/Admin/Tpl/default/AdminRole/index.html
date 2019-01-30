@@ -1,0 +1,44 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<div class="header">
+		<div class="float-left">
+			<a href="{:U('AdminRole/add')}" class="mini-btn mini-btn-green">新增管理组</a>
+		</div>
+	</div>
+	<div class="content">
+		<form name='betch-form' id='betch-form' method="POST" action="{:U('AdminRole/delete')}">
+			<table>
+				<tr>
+					<th width=30><input type="checkbox" onclick="$.checkbox(this, 'td')"></th>
+					<th width="120">组名</th>
+					<th>操作</th>
+				</tr>
+				<volist name="datas" id="rs">
+					<tr>
+						<td>
+							<if condition="$rs['status'] neq 100">
+								<input type="checkbox" name="ids[]" value="{$rs['id']}">
+							</if>
+						</td>
+						<td>{$rs['title']}</td>
+						<td>
+							<if condition="$rs['status'] eq 100">
+								系统内置
+							<else />
+								<a class="act-btn" href="{:U('AdminRole/edit', array('id'=>$rs['id']))}" title="修改">修改</a>
+								<a class="act-btn delete-btn" href="{:U('AdminRole/delete', array('id'=>$rs['id']))}" title="删除">删除</a>
+							</if>
+						</td>
+					</tr>
+				</volist>
+			</table>
+		</form>
+	</div>
+</div>
+<div class="action-bar">
+	<div class="float-left"><a class="ui-btn betch-delete-btn" name="#betch-form">删除选中</a></div>
+	<div class="float-right pager">
+		<div class="page">{$page}</div>
+	</div>
+</div>
+<include file="Public:footer"/>

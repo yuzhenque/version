@@ -1,0 +1,84 @@
+{if empty($hadFetchAreaCls)}
+	<script type="text/javascript">
+		var g_province_list = {:json_encode($allProvinceArr)};
+		var g_city_list = {:json_encode($allCityArr)};
+		var g_prefecture_list = {:json_encode($allPrefectureArr)};
+		
+		
+		/**
+		 * 省改变
+		 * 
+		 * @param string p_pre		前缀
+		 * @param string p_value	省ID
+		 */
+		function province_id_change(p_pre, p_value)
+		{
+			var city_html = "<option value=''>--全部市--</option>";
+			var ar_html = "<option value=''>--全部区县--</option>";
+			var idx;
+			if(p_value != ''){
+				for(idx in g_city_list){
+					if(g_city_list[idx]['ar_parent_id'] == parseInt(p_value)){
+						city_html += "<option value='"+ g_city_list[idx]['ar_id'] +"'>"+ g_city_list[idx]['ar_name'] +"</option>";
+					}
+				}
+				$('#'+ p_pre +'city_id').show();
+			}else{
+				$('#'+ p_pre +'city_id').hide();
+			}
+			$('#'+ p_pre +'ar_id').hide();
+			
+			$('#'+ p_pre +'city_id').html(city_html);
+			$('#'+ p_pre +'ar_id').html(ar_html);
+		}
+		
+		/**
+		 * 市改变
+		 * 
+		 * @param string p_pre		前缀
+		 * @param string p_value	市ID
+		 */
+		function city_id_change(p_pre, p_value)
+		{
+			var ar_html = "<option value=''>--全部区县--</option>";
+			var idx;
+			if(p_value != ''){
+				for(idx in g_prefecture_list){
+					if(g_prefecture_list[idx]['ar_parent_id'] == parseInt(p_value)){
+						ar_html += "<option value='"+ g_prefecture_list[idx]['ar_id'] +"'>"+ g_prefecture_list[idx]['ar_name'] +"</option>";
+					}
+				}
+				$('#'+ p_pre +'ar_id').show();
+			}else{
+				$('#'+ p_pre +'ar_id').hide();
+			}
+			
+			$('#'+ p_pre +'ar_id').html(ar_html);
+		}
+	</script>
+{/if}
+{@$hadFetchAreaCls = true;}
+<select name='{$pre}province_id' id="{$pre}province_id" onchange="province_id_change('{$pre}', this.value);" class="{if $require == 1}require gt_0{/if}">
+	<option value="">--全部省--</option>
+	<foreach name="allProvinceArr" item="vo">
+		<option value="{$vo.ar_id}" <if condition="$vo['ar_id'] eq $provinceId">selected</if>>{$vo.ar_name}</option>
+	</foreach>
+</select>
+<select name='{$pre}city_id' id="{$pre}city_id" <if condition='empty($provinceId)'>style="display: none"</if> onchange="city_id_change('{$pre}', this.value);">
+	<option value=''>--全部市--</option>
+	<foreach name="allCityArr" item="vo">
+		{if $vo['ar_parent_id'] == $provinceId}
+			<option value="{$vo.ar_id}" <if condition="$vo['ar_id'] eq $cityId">selected</if>>{$vo.ar_name}</option>
+		{/if}
+	</foreach>
+</select>
+{if $arId !== 'empty'}
+<select name='{$pre}ar_id' id="{$pre}ar_id" <if condition='empty($cityId)'>style="display: none"</if>>
+	<option value=''>--全部区县--</option>
+	<foreach name="allPrefectureArr" item="vo">
+		{if $vo['ar_parent_id'] == $cityId}
+			<option value="{$vo.ar_id}" <if condition="$vo['ar_id'] eq $arId">selected</if>>{$vo.ar_name}</option>
+		{/if}
+	</foreach>
+</select>
+{/if}

@@ -1,0 +1,59 @@
+<include file="Public:header"/>
+<div class="onecolumn">
+	<div class="header">
+		<div class="float-left">
+			<a href="{:U('AdminRole/edit')}" class="mini-btn mini-btn-green">新增管理组</a>
+		</div>
+	</div>
+	<div class="search-bar">
+		<form action="{:U('User/index')}" id="search_form" method="get">
+			<input type="text" value="{$_GET['keyword']}" class="inner-txt w200" name="keyword" placeholder='请输入操作者'>
+			<a onclick="$('#search_form').attr('action', '{:U('AdminLog / index')}').submit()" title="搜索" class="search-btn submit"><span>搜索</span></a>
+		</form>
+	</div>
+	<div class="content">
+        <form name='betch-form' id='betch-form' method="POST" action="{:U('AdminLog/delete')}">
+			<table>
+				<tr>
+					<th width=30><input type="checkbox" onclick="$.checkbox(this, 'td')"></th>
+					<th>编号</th>
+					<th>操作者</th>
+					<th>内容</th>
+					<th>类型</th>
+					<th>请求类型</th>
+					<th>请求URL</th>
+					<th>请求IP</th>
+					<th>操作时间</th>
+				</tr>
+				<volist name="list" id="rs">
+					<tr>
+						<td class="items"><input type="checkbox" name="items[]" value="{$rs['id']}"></td>
+						<td>{$rs['id']}</td>
+						<td>{$rs['username']}</td>
+						<td>{$rs['descript']}</td>
+						<td>
+							<eq name="rs.logType" value="0">非法访问</eq>
+							<eq name="rs.logType" value="1">正常访问</eq>
+						</td>
+						<td>
+							<eq name="rs.requestType" value="0">未知</eq>
+							<eq name="rs.requestType" value="1">GET</eq>
+							<eq name="rs.requestType" value="2">POST</eq>
+							<eq name="rs.requestType" value="3">Ajax</eq>
+						</td>
+						<td>{$rs['url']}</td>
+						<td>{$rs['ip']}</td>
+						<td>{$rs['actionTime']}</td>
+					</tr>
+				</volist>
+			</table>
+		</form>
+	</div>
+</div>
+<div class="action-bar">
+	<div class="float-left"><a class="ui-btn betch-delete-btn" name="#betch-form">删除选中</a></div>
+	<div class="float-right pager">
+		<div class="page">{$page}</div>
+	</div>
+</div>
+<include file="Public:footer"/>

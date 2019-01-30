@@ -1,0 +1,67 @@
+<include file="Public:boxheader"/>
+<div class="onecolumn">
+	<!--<div class="header"><h3><if condition="!empty($id)">修改<else/>添加</if>图文内容</a></h3></div>-->
+
+	<div class="content" style="height: 470px; overflow-y: auto">
+		<form id="betch-form" class="" method="post" action="{:U('Source/newsedit', 'from='.$from.'&parent_id='.$parentId.'&iscover='.$isCover.'&back_id='.$backId.'&id='.$id)}">
+			<div class="edit-item">
+				<label for="title" class="lefter">标 题：</label>
+				<div class="righter must">
+					<input type="text" class="long-txt require" value="{$newsArr['title']}" name="title" id="title">
+				</div>
+			</div>
+			<if condition="$from eq 'ReplyKeyword'">
+			<div class="edit-item">
+				<label for="keyword" class="lefter">关键字：</label>
+				<div class="righter must"><input type="text" class="long-txt require" value="{$newsArr['keyword']}" name="keyword" id="keyword"><span class="DESC">多个使用英文逗号或空格隔开</span></div>
+			</div>
+			</if>
+			<if condition="$from eq 'material'">
+			<div class="edit-item">
+				<label for="author" class="lefter">作者：</label>
+				<div class="righter must"><input type="text" class="long-txt require" value="{$newsArr['author']|default=$uswe['uswe_name']}" name="author" id="author"><span class="DESC">文章作者</span></div>
+			</div>
+			</if>
+			<div class="edit-item">
+				<label class="lefter">封面图：</label>
+				<div class="righter">
+					<if condition="$isCover == 1">
+						{Upload('Upload/file', array('title' => '上传封面（640*320）', 'id'=>'image', 'name'=>'image', 'value'=>$newsArr['image'], 'path'=>'reply_image', 'ext'=>'img_ext', 'multi'=>false))}
+					<else/>
+						{Upload('Upload/file', array('title' => '上传封面（400*400）', 'id'=>'image', 'name'=>'image', 'value'=>$newsArr['image'], 'path'=>'reply_image', 'ext'=>'img_ext', 'multi'=>false))}
+					</if>
+				</div>
+			</div>
+			
+			<div class="edit-item">
+				<label class="lefter">描述：</label>
+				<div class="righter" >
+					<textarea name="digest" rows=8 style="width: 98%">{$newsArr.digest}</textarea>
+				</div>
+			</div>
+			<div class="edit-item">
+				<label class="lefter">内容：</label>
+				<div class="righter" id="html-item">
+					{:html_editor('image', 'content', $newsArr['content'], '99%', 180, 'weixin')}
+				</div>
+			</div>
+			
+			<div class="edit-item">
+				<div class="righter">
+					<span class="ui-btn ui-btn-green"  onclick="submit_data(this);">保 存</span>
+					<span class="ui-btn ui-btn-green" onclick="window.parent.tb_remove();">取 消</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	function submit_data(p_dom){
+		if($('.uploadify-fileItms').length <= 0){
+			$.warn("请上传图片");
+			return;
+		}
+		_submitFormData(p_dom);
+	}
+</script>
+<include file="Public:boxfooter"/>

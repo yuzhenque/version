@@ -1,0 +1,47 @@
+{if !empty($ad_list)}
+<div class="hot-tickets  ">
+	<div class="hot-title">
+		{@$category_list = C('GOODS_CATEGORY');}
+		<span class="hot-title-cont hotel">热门{$category_list[$position]['title']}</span>
+		<a class="hot-more f_r " href="{:U('Goods/index', 'goods_type='. $position)}">更多+</a>
+	</div>
+	<div class="_bank_30"></div>
+	<div class="hot-content">
+		{:R('Ad/index',array('index', $position, 1),'Widget')}
+
+		{foreach $ad_list as $rs}
+		{if $rs['ad_order_id'] == 1}
+		<div  class="hot-ad {if $other == 1}f_l{else}f_r{/if}">
+			<a href="{:U('goods/item',array('goods_id'=>$rs['goods']['goods_id']))}">
+				<img src="{:thumb($rs['ad_image_id'], 368, 446)}">
+			</a>
+			<div class="hot-text f_{$position}" style="background:" >
+				<div class="cn_cp" style="float:left; padding: 13px;">
+					<span class="dp_block m_top_5" style="color:#fff;font-size:14px;">{:cut_str($rs['goods']['goods_name'],50)}</span>
+					<span class="dp_block m_top_5"style="color:#fff;">市场价:￥ {$rs['goods']['goods_price']}</span>
+				</div>
+				<div class="cbuy go-btn" rel="{:U('goods/item',array('goods_id'=>$rs['goods']['goods_id']))}">立即购买</div>
+			</div>
+		</div>   
+		{/if}
+		{/foreach}
+		
+		<div class="hot-list {if $other == 1}f_r{else}f_l{/if}">
+			<ul>
+				{foreach $ad_list as $rs}
+				{if $rs['ad_order_id'] > 1}
+				<li >
+					<a href="{:U('goods/item',array('goods_id'=>$rs['goods']['goods_id']))}">
+						<img src="{:thumb($rs['ad_image_id'],233,133)}">
+						<span class="dp_block m_top_5" title="{$rs['goods_name']}">{:cut_str($rs['goods']['goods_name'],50)}</span>
+						<span class="dp_block m_top_5 c_0070bf">市场价:￥ {$rs['goods']['goods_price']}</span>
+					</a>
+					<span class="dp_block m_top_5"><a href="{:U('Business/item', array('company_id'=>$rs['goods']['boss_id']))}">{:cut_str(D('User')->getFieldByUserId($rs['goods']['boss_id'], 'user_company_name'), 50)}</a></span>
+				</li>
+				{/if}
+				{/foreach}
+			</ul>
+		</div>
+	</div>
+</div>
+{/if}

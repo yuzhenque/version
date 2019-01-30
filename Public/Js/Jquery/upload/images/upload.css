@@ -1,0 +1,27 @@
+.uploadify-toolbar{border-bottom:1px solid #ccc;padding:0 0 10px 5px;position:relative;line-height:33px;}
+.swfupload,.uploadify-queue-item,.uploadify-queue-btns{margin:5px 5px 8px 5px;}
+.uploadify-queue-btns{float:left;width:100px;height:100px;left:-5000px;}
+.uploadify-queue-item,.uploadify-button{border:1px solid #DDDDDD;background:#FFFFFF;width:100px;height:100px;}
+.uploadify-queue-item{margin-right:15px;}
+.uploadify-queue-item .hide-path{position: absolute;display:block;}
+.upload-completed{background-color:#F5F5F5;cursor:pointer;}
+.uploadify-button .uploadify-button-text{cursor:pointer;display:block;background:url(add.png) no-repeat center #FFFFFF;width:100%;height:100%;}
+.uploadify-queue-item{font-size:12px;position: relative;float:left;text-align:center;}
+.uploadify-queue-item .fileType,.uploadify-fileItms .fileType{font-size:2.2em;line-height:40px;height:40px;font-weight:bold;color:#037C11;display:block;padding:10px 0;}
+.uploadify-queue-item .cancel{position: absolute;width:16px;height:16px;top:-8px;right:-5px;z-index:1;}
+.uploadify-queue-item .cancel a{font-size:0;background:url(cancel.png) no-repeat;width:23px;height:23px;display:block;}
+.uploadify-queue-item .uploadify-progress{position: absolute;overflow:hidden;width:90px;height:5px;background:#eee;top:60px;margin-left:-45px;left:50%;}
+.uploadify-progress-bar {background-color: #037C11;height: 5px;width: 1px;float:left;display:block;overflow:hidden;}
+.uploadify-queue-item .fileName{padding-top:7px;height:20px;line-height:20px;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;-moz-binding: url('ellipsis.xml#ellipsis');}
+.uploadify-queue-item .fileName,.uploadify-queue-item .fileSize{overflow:hidden;display:block;width:100px;margin:auto;}
+.uploadify-true{display:block;position: absolute;z-index:2;left:0;top:0;width:30px;height:30px;background:url(ok.png);}
+.uploadify-clock,.uploadify-move{position:absolute;right:5px;background:url(calendar.png) no-repeat 6px center #037C11;padding:0 10px 0px 33px;color:#fff;font-size:14px;}
+.uploadify-move{background-image: url(move.png);}
+.uploadify-mini-btn,.uploadify-clock,.uploadify-ui-btn,.uploadify-move{-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;-o-border-radius: 3px;-ms-border-radius: 3px;}
+.uploadify-mini-btn {border: 1px solid #999999;cursor: pointer;display: inline-block;margin-right: 3px;height: 21px;line-height: 21px;padding: 5px 15px;text-align: center;vertical-align: top;word-spacing:5px;background: url(ui_graybtn_bg.gif) repeat-x top;font-size:13px;}
+.uploadify-mini-btn-green{background: url(ui_btn_bg.gif) repeat-x top;color:#FFFFFF;border:1px solid #037c11;}
+.uploadify-fileItms{background-color:#F5F5F5;width:100px;height:100px;display:block;border:1px solid #DDDDDD;margin:5px 15px 5px 0px;position:relative;float:left;text-align:center;}
+.uploadify-fileItms img{position: absolute;}
+.uploadify-fileItms .uploadify-cancle{display:block;width:23px;height:23px;background:url(cancel.png) no-repeat;top:-9px;right:-9px;position: absolute;cursor:pointer;}
+.uploadify-fileItms .fileName{display:block;width:90px;margin:auto;padding-top:5px;overflow:hidden;height:20px;line-height:20px;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;-moz-binding: url('ellipsis.xml#ellipsis');}
+.uploadify-ui-btn { border: 1px solid #999999;cursor: pointer;display: inline-block;height: 30px;line-height: 30px;margin-right: 3px;padding: 5px 25px;text-align: center;vertical-align: top;word-spacing:5px;background: url(ui_graybtn_bg.gif) repeat-x top #f2f2f2;font-size:13px;}

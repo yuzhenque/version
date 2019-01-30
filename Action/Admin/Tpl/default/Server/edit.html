@@ -1,0 +1,89 @@
+<div class="onecolumn">
+	<form method="post" action="{:U('Server/'.ACTION_NAME, 'server_id='.$data['server_id'])}" class="toAjaxForm" id="betch-form">
+		<div class="content" style="width: 650px">
+			<div class="edit-item">
+				<div class="lefter">类型</div>
+				<div class="righter">
+					<select name='server_type'>
+						{foreach C('server_type') as $k=>$v}
+						<option value="{$k}" {if $k == $data['server_type']}selected{/if}>{$v}</option>
+						{/foreach}
+					</select>
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">同步方式</div>
+				<div class="righter">
+					<select name='server_sync_type'>
+						<option value="1" {if 1 == $data['server_sync_type']}selected{/if}>SFTP</option>
+						<option value="2" {if 2 == $data['server_sync_type']}selected{/if}>FTP</option>
+					</select>
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">服务器名</div>
+				<div class="righter">
+					<input type="text" name="server_title" value="{$data['server_title']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">IP</div>
+				<div class="righter">
+					<input type="text" name="server_ip" value="{$data['server_ip']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">端口</div>
+				<div class="righter">
+					<input type="text" name="server_port" value="{$data['server_port']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">域名</div>
+				<div class="righter">
+					<input type="text" name="server_domain" value="{$data['server_domain']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">账号</div>
+				<div class="righter">
+					<input type="text" name="server_account" value="{$data['server_account']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">密码</div>
+				<div class="righter">
+					<input type="text" name="server_password" value="{$data['server_password']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">本地目录</div>
+				<div class="righter">
+					<input type="text" name="server_local_path" value="{$data['server_local_path']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="lefter">服务端目录</div>
+				<div class="righter">
+					<input type="text" name="server_sync_path" value="{$data['server_sync_path']}" class="long-txt require">
+					<span></span>&nbsp;
+				</div>
+			</div>
+			<div class="edit-item">
+				<div class="righter">
+					<span class="ui-btn ui-btn-green" onclick="_submitFormData(this);">提 交</span>
+					<a onclick="$('#MYWIN_OVERLAY').trigger('click')" class="ui-btn">取 消</a>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,48 @@
+{if $isPc == true}
+	<div>
+
+		<input type="text" id="use_date_{$gotyId}" name="use_date[{$gotyId}]" value="{$useDate}" class="use_date use_date_{$gotyId}" style="height:30px;width:80px;text-align:center;" 
+			   onclick="WdatePicker({'minDate': '<php>echo $date_format[minDate];</php>', 'maxDate': '<php>echo $date_format[maxDate];</php>', 'onpicked': <php> echo $date_format[onpicked]; </php>});">
+		{if $is_end == true}
+		至 <input type="text" id="end_date_{$gotyId}" name="end_date[{$gotyId}]" value="{$endDate}" class="end_date end_date_{$gotyId}" style="height:30px;width:80px;text-align:center;" 
+				 onclick="WdatePicker({'minDate': '#F{$dp.$D(\\'use_date_<?php echo $gotyId;?>\\', {d:1});}', 'maxDate': '<php>echo $date_format[maxDate];</php>', 'onpicked': <php> echo $date_format[onpicked]; </php>});">
+		{/if}
+	</div>
+{else}
+	<link href="/Public/Js/mobiscroll/mobiscroll.custom-2.6.0.min.css?v={:C('VERSION')}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/Public/Js/mobiscroll/mobiscroll.custom-2.6.0.min.js?v={:C('VERSION')}"></script>
+	<div>
+		<input type="text" name="use_date[{$gotyId}]"  class="use_date use_date_{$gotyId}"  style="height:40px;width:80px;line-height: 40px;text-align:center;" 
+			   placeholder="请选择日期">
+		<eq name="is_end" value="true">
+		至 <input type="text" name="end_date[{$gotyId}]"  class="end_date end_date_{$gotyId}"  style="height:40px;width:80px;line-height: 40px;text-align:center;" 
+				 placeholder="请选择日期">
+		</eq>
+		<div class="time" style="width:400px; position: absolute;text-align:left;z-index: 100006;display: none;">
+			{$calendar_data}
+		</div>   
+	</div>
+	<script type="text/javascript">
+	//      var min_date = '1970-01-01'.split('-');
+			var min_date = '<?php echo $date_format[minDate];?>'.split('-');
+					if ('<?php echo $date_format[maxDate];?>' == ""){
+			var max_date = '2222-01-01'.split('-');
+			} else{
+				var max_date = '<?php echo $date_format[maxDate];?>'.split('-');
+			}
+	//        
+			$(".use_date").mobiscroll().date({
+				preset: 'time',
+					theme : 'android-ics light',
+					mode :  'mixed',
+					display : 'modal',
+					ampm : false,
+					lang : 'zh',
+					onSelect:mobiscroll_select,
+					minDate : new Date(min_date[0], min_date[1] - 1, min_date[2]),
+					maxDate : new Date(max_date[0], max_date[1] - 1, max_date[2]),
+					dateFormat : 'yy-mm-dd',
+					dateOrder : 'yymmdd D'
+			});
+	</script>
+{/if}

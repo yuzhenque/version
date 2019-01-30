@@ -1,0 +1,254 @@
+/*绿色主题CSS文件*/
+body {
+    color: #555555;
+}
+
+a{
+	color:#555555;
+}
+
+.user-wrapper .header{
+	background-color: #0070bf;
+	color: #FFFFFF;
+}
+
+.view-btn{color:#18a0ff;}
+
+#header a{
+	color:#FFFFFF;
+}
+
+#header .subnv-layer a:hover{
+	background: #18a0ff; 
+	color:#fff;
+}
+
+#header .subnv-layer a{
+	color:#555;
+}
+
+#header .nv li.current{
+	background-color:#18a0ff;
+}
+
+#header .subnv-layer, #select-tag-box{
+	background-color: #FFFFFF;
+	border:1px solid #F2F2F2;
+}
+
+#header .ui-nv-hover{
+	background-color: #46B0E8;
+}
+
+.ico-setting, .ico-logout, .ico-skin,.ico-clear{
+	background-color:#18a0ff;
+}
+
+#shortcut{
+	/*background-color:#F3F3F3;*/
+}
+
+#shortcut h4{
+    background: #f3f3f3;text-indent: 10px;
+}
+
+#shortcut h4.h4-focus {
+	color: #0070bf;
+}
+
+#shortcut li{
+	border-bottom:1px dotted #e5e5e5;
+}
+#shortcut li a{
+	background: rgba(0, 0, 0, 0) url("blue/aline.gif") no-repeat scroll left center;
+    border-left: 1px dotted #e4e4e4;
+    display: block;
+    height: 100%;
+    padding-left: 12px;
+}
+
+#wrapper{
+	background-color: #FFFFFF;
+}
+
+.onecolumn {
+    background-color: #fdfdfd;
+}
+
+.onecolumn .header,  #MYWIN_BOX .mywin-title{
+	background-color:#EEEEEE;
+	border-bottom:1px solid #CCCCCC;
+}
+
+.onecolumn .header h3{
+	color:#000000;
+}
+li.ui-tag-cur{
+	color:#ff0000;
+}
+
+.onecolumn .content th, .min-box th, .onecolumn .content th a, .min-box th a{
+	color:#333333;
+}
+
+.onecolumn .content th, .min-box th{
+	background: #EBEBEB;
+	color:#333333;
+}
+
+.min-box .inner-head th,.onecolumn .content .inner-head th{background: #fff;border-bottom:1px solid #666;}
+
+.long-txt,.short-txt, .middle-txt, select{
+	border:1px solid #CCCCCC;
+	background-color: #FEFEFE;
+}
+
+.edit-item{
+	border-bottom: 1px solid #EEEEEE;
+}
+
+.DESC {
+    color: #999999;
+    padding-left: 5px;
+}
+
+.search-bar .inner-search-btn{
+	background:#0066B3;
+    border: 1px solid #0066B3;
+}
+
+/*弹出框CSS START*/
+.Alert_Content .header{
+	background-color: #004F9D;
+}
+/*弹出框CSS END*/
+
+.ui-btn, .mini-btn{
+	/*border: 1px solid #DDD;*/
+	background: #DDD;
+}
+
+.ui-btn:hover, .mini-btn:hover{
+	/*border: 1px solid #CCC;*/
+	background: #CCC;
+}
+
+.ui-btn-green, .mini-btn-green, .act-btn, .status-btn{
+	background:#428bca;
+	color:#FFFFFF;
+	/*border:1px solid #428bca;*/
+}
+.method-btn{
+	background: #ff9933;
+}
+.method-btn-blue{
+	background: #428bca;
+}
+.delete-btn{
+	background: #ff9813;
+	color: #fff
+}
+.delete-btn:hover{
+	background: #ff9813;
+}
+.status-btn{border:0;}
+.status-1,.status-2,.status-3,.status-4{color:#FFFFFF;border:0;}
+.status-1{background:#00A300;}
+.status-2{background:#FF0000;}
+.status-3{background:#D8F102;}
+.status-4{background:#D7DCFF;}
+.status-5{background:#DC681B;}
+.status-6{background:#18a0ff;}
+.status-7{background:#415067;}
+.status-8{background:#B848FF;}
+.status-9{background:#FFE66B;}
+.status-10{background:#4DB849;}
+.status-11{background:#252525;}
+.status-12{background:#E53C36;}
+.status-13{background:#a53C96;}
+
+.ui-btn-green:hover, .mini-btn-green:hover, .act-btn:hover{
+	background-color: #135EA5;
+}
+
+#MYWIN_BOX, #window-container{
+	background-color:#FFFFFF;
+	border:1px solid #333;
+}
+
+/*分页展示 START*/
+.pager a , .pager .PAGER_TOTAL{
+	background-color: #EEEEEE;
+}
+
+.pager a:hover{
+	background-color: #428bca;
+	color:#FFFFFF;
+}
+
+.pager .PAGER_CURRENT{
+	background: #428bca; 
+	color:#fff;
+}
+/*分页展示END*/
+
+#select-tag-box a:hover{
+	color:#FFFFFF;
+}
+
+#tag-container a:hover{
+	background:#04bc1a;
+}
+
+.color-1{color:#037C11;}
+.color-0{color:#FF0000;}
+.color-2{color:#EC9110;}
+
+.onecolumn .content td, .edit-item, .addDiv, .min-box td {
+    border-bottom: 1px solid #EEEEEE;
+}
+.edit-item:last-child, .addDiv:last-child{
+	border-bottom: 0px;
+}
+
+.ui-radio-checked{
+	border:1px solid #037C11;
+}
+
+.onecolumn .content .inner-table td{
+	border:1px dotted #CCCCCC;
+}
+
+.treeview .li-focus a.focus {
+	background-color: #18a0ff;
+	color:#FFFFFF;
+}
+
+.search-bar .search-btn{
+	background: #18a0ff;
+	border:1px solid #18a0ff;
+}
+.row .col-item{
+	color:#fff;
+}
+.row .col-item h1 {
+    font-size: 35px;
+    font-weight: 300;
+    padding: 12px 0 0 25px;
+}
+.row .col-item p {
+    font-size: 14px;
+    padding-left: 25px;
+}
+.row .col-item i {
+    color: rgba(0, 0, 0, 0.05);
+    font-size: 70px;
+}
+.row .col-item i {
+    bottom: 0;
+    position: absolute;
+    right: 10px;
+}
+.btn-y{
+	background-color: #d31b51;
+}

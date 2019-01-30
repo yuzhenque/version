@@ -1,0 +1,43 @@
+<include file="Public:boxheader"/>
+<script type="text/javascript" src="__PUBLIC__/Js/Jquery/upload/process.js?v={:C('VERSION')}"></script>
+<script type="text/javascript">
+uploadify_location_href = "{U('Upload/run','action_name=delete')}";
+$(function(){
+	history_file('{$controller_id}-box');
+});
+</script>
+<div class="onecolumn">
+	<div class="header"><h3>历史上传</h3></div>
+	<div class="content">
+		<div class="uploadify-toolbar">
+			<span onclick="uploadify_select_file('{$params['id']}','{$controller_id}')" class="uploadify-mini-btn uploadify-mini-btn-green" id="save_tag">确 定</span>
+			<span class="uploadify-mini-btn" onclick="window.parent.tb_remove();">取 消</span>
+			<a href="{:U('Upload/run',extend($params, array('action_name'=>$params['is_image']?'image':'file','is_image'=>'')))}" class="uploadify-move mywin"><b>上传{if $params['is_image']}图片{else}文件{/if}</b></a>
+		</div>
+		<div style="width:100%;height:240px;overflow: auto;padding-top:5px;" id="{$controller_id}-box" class="{if $params['multi']}can-multi-file{/if}{if $params['is_image']} is-image-file{/if}">
+		{foreach $datas as $vo}
+			{if is_file($vo['file_path'])}
+			<div id="SWFUpload_{$vo['id']}" class="uploadify-queue-item upload-completed" title="{H($vo['name'])}">
+				<div class="cancel"><a onclick="uploadify_delete('{$controller_id}','SWFUpload_{$vo['id']}')">X</a></div>
+			{if in_array($vo['file_ext'],$image_exts)}
+				{@$info=getPos($vo['file_path'])}
+				{if $info}
+				<img class="hide-path" width="{$info['width']}" height="{$info['height']}" style="top:{$info['top']}px;left:{$info['left']}px;" src="{$vo['root_path']}" />
+				{else}
+				<a class="hide-path clone" rel="{$vo['root_path']}" style="display:block;width:100%;height:100%;background:url({$vo['root_path']}) no-repeat center;" title="{$vo['name']}"></a>
+				{/if}
+			{else}
+				<a rel="{$vo['root_path']}" class="hide-path">
+					<span class="fileType">{$vo['file_ext']}</span>
+					<span class="fileName">{H($vo['name'])}</span>
+				</a>
+			{/if}
+				<span class='uploadify-checked'><input type="hidden" value="{$vo['id']}"></span>
+			</div>
+		{/if}
+		{/foreach}
+		</div>
+	</div>
+</div>
+
+<include file="Public:boxfooter"/>
