@@ -115,7 +115,7 @@ class SyncAction extends CommonAction
 	public function script()
 	{
 		$server_list = array(
-            array('内网测试服', 'http://172.18.3.35:932/'),
+            array('内网测试服', 'http://192.168.9.15:932/'),
             array('外网测试服', 'http://erp.e10.cncn.net/'),
             array('e007服务器', 'http://erp.derp.cncn.net/'),
             array('e008服务器', 'http://erp.d08.cncn.net/'),
