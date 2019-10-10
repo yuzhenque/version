@@ -121,6 +121,7 @@ class SyncAction extends CommonAction
             array('e008服务器', 'http://erp.d08.cncn.net/'),
             array('e008-2服务器', 'http://wxxy.d08.cncn.net/'),
             array('e009服务器', 'http://erp.d09.cncn.net/'),
+            array('e010服务器', 'http://erp.d10.cncn.net/'),
             array('建发测试服', 'http://th.cndits.net:8009/'),
             array('建发正式服', 'http://h.cndits.com/'),
             array('苏州文旅', 'http://erp.stotd.net/'),
