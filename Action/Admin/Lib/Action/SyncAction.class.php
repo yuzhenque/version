@@ -141,6 +141,7 @@ class SyncAction extends CommonAction
             array('西班牙三和', 'http://erp.holatrip.com/'),
             array('苏州舜天', 'http://www.stlxs.cn/'),
             array('芙蓉假期', 'http://erp.furongjiaqi.com/'),
+            array('遵义旅行社', 'http://zylxs.d08.cncn.net/'),
             array('银河国旅', 'http://erp.ntyhlx.com/'),
             array('山东银座', 'http://erp.4008161111.com/'),
             array('甘肃旅控', 'http://erp.gslykg.com/'),
