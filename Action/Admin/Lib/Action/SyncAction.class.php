@@ -146,7 +146,7 @@ class SyncAction extends CommonAction
             array('山东银座', 'http://erp.4008161111.com/'),
             array('甘肃旅控', 'http://erp.gslykg.com/'),
             array('上海乐视', 'http://erp.yueshilvyou.com/'),
-            array('厦门智赢', 'http://erp.travel.pwgci.com:9088/'),
+            array('厦门智赢', 'https://erp.travel.pwgci.com:9088/'),
 		);
 		
 		$this->assign('server_list', $server_list);
