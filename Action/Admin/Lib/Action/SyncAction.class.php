@@ -115,13 +115,15 @@ class SyncAction extends CommonAction
 	public function script()
 	{
 		$server_list = array(
-            array('内网测试服', 'http://192.168.9.15:932/'),
-            array('外网测试服', 'http://erp.e10.cncn.net/'),
+//            array('内网测试服', 'http://192.168.9.15:932/'),
+//            array('外网测试服', 'http://erp.e10.cncn.net/'),
             array('e007服务器', 'http://erp.derp.cncn.net/'),
-            array('e008服务器', 'http://erp.d08.cncn.net/'),
-            array('e008-2服务器', 'http://wxxy.d08.cncn.net/'),
-            array('e009服务器', 'http://erp.d09.cncn.net/'),
-            array('e010服务器', 'http://erp.d10.cncn.net/'),
+            array('d08服务器', 'http://erp.d08.cncn.net/'),
+            array('d08-2服务器', 'http://wxxy.d08.cncn.net/'),
+            array('d09服务器', 'http://erp.d09.cncn.net/'),
+            array('d10服务器', 'http://erp.d10.cncn.net/'),
+            array('d11服务器', 'http://erp.d11.cncn.net/'),
+            array('d12服务器', 'http://erp.d12.cncn.net/'),
             array('建发测试服', 'http://th.cndits.net:8009/'),
             array('建发正式服', 'http://h.cndits.com/'),
             array('苏州文旅', 'http://erp.stotd.net/'),
@@ -148,6 +150,7 @@ class SyncAction extends CommonAction
             array('上海乐视', 'http://erp.yueshilvyou.com/'),
             array('厦门智赢', 'http://erp.travel.pwgci.com/'),
             array('山西红马', 'http://hongma.serp.cncn.net/'),
+            array('成都铁路', 'http://cdtl.d12.cncn.net/'),
 		);
 		
 		$this->assign('server_list', $server_list);
