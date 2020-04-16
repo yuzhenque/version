@@ -135,7 +135,7 @@ class SyncAction extends CommonAction
             array('湖南佳游', 'http://erp.jiayouguolv.com/'),
             array('两岸国旅', 'http://erp.cncsit.com/'),
             array('贵阳中旅', 'http://gyzl.derp.cncn.net/'),
-            array('上铁国旅', 'http://stgl.derp.cncn.net/'),
+            array('上铁国旅', 'http://stgl.jk.railshj.com:932/'),
         //    array('贵州海外', 'http://gzhw.derp.cncn.net/'),
             array('上海世航', 'http://erp.shglb2b.cn/'),
             array('西美', 'http://erp.ximeizhilv.cn/'),
@@ -152,7 +152,7 @@ class SyncAction extends CommonAction
             array('山西红马', 'http://hongma.serp.cncn.net/'),
             array('成都铁路', 'http://cdtl.d12.cncn.net/'),
             array('福建超越未来', 'http://cywl.serp.cncn.net/'),
-            array('广东东旅', 'http://zylxs.d08.cncn.net/'),
+            array('广东中旅', 'http://gdzl.serp.cncn.net/'),
 		);
 		
 		$this->assign('server_list', $server_list);
