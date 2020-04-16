@@ -151,7 +151,7 @@ class SyncAction extends CommonAction
             array('厦门智赢', 'http://erp.travel.pwgci.com/'),
             array('山西红马', 'http://hongma.serp.cncn.net/'),
             array('成都铁路', 'http://cdtl.d12.cncn.net/'),
-            array('福建超越未来', 'http://cywl.serp.cncn.net/'),
+            array('福建超越未来', 'http://erp.cywlly.com/'),
             array('广东中旅', 'http://gdzl.serp.cncn.net/'),
 		);
 		
