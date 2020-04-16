@@ -152,6 +152,7 @@ class SyncAction extends CommonAction
             array('山西红马', 'http://hongma.serp.cncn.net/'),
             array('成都铁路', 'http://cdtl.d12.cncn.net/'),
             array('福建超越未来', 'http://cywl.serp.cncn.net/'),
+            array('广东东旅', 'http://zylxs.d08.cncn.net/'),
 		);
 		
 		$this->assign('server_list', $server_list);
