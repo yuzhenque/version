@@ -50,9 +50,9 @@ $g_domainCfg = array(
 //数据库配置
 $g_dbCfg = array(
 	'DB_TYPE'				=>	'Mysql',
-	'DB_HOST'				=>	'47.98.150.174',
-	'DB_USER'				=>	'svn_version',
-	'DB_PWD'				=>	'ptCP3ePjbS',
+    'DB_HOST'				=>	'127.0.0.1',
+    'DB_USER'				=>	'root',
+    'DB_PWD'				=>	'root',
 	'DB_NAME'				=>	'svn_version',
 	'DB_PREFIX'				=>	'',
 	'DB_CHARSET'			=>	'utf8',
